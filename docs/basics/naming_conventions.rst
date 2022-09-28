@@ -5,31 +5,35 @@ Variable Naming Conventions
 While it is possible to set up the same OpenMDAO multiphysics problem with different sets of variable names, it is preferable for codes solving the same physics to use the same variable names to be more easily interchangeable.
 This table provides the required names for coupling variables associated with a particular physics in Mphys.
 
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| Variable             | Associated Solver | Mphys tag         | Variable description                                                          |
-+======================+===================+===================+===============================================================================+
-| :code:`x_aero0`      | Aerodynamic       | mphys_coordinates |  Aerodynamic surface coordinates (jig shape)                                  |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`x_aero`       | Aerodynamic       | mphys_coupling    |  Aerodynamic surface coordinates (deformed)                                   |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`u_aero`       | Aerodynamic       | mphys_coupling    |  Aerodynamic surface displacements                                            |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`f_aero`       | Aerodynamic       | mphys_coupling    |  Aerodynamic surface forces                                                   |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`T_convect`    | Aerodynamic       | mphys_coupling    |  Temperature for convective solver at interface                               |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`q_convect`    | Aerodynamic       | mphys_coupling    |  Convective heat flow at interface                                            |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`x_struct0`    | Structural        | mphys_coordinates |  Structural coordinates (jig shape)                                           |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`u_struct`     | Structural        | mphys_coupling    |  Structural state vector (displacements)                                      |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`f_struct`     | Structural        | mphys_coupling    |  Structural forces                                                            |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`T_conduct`    | Thermal           | mphys_coupling    |  Temperature at interface (structural side)                                   |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
-| :code:`q_conduct`    | Thermal           | mphys_coupling    |  Conductive heat flow at interface (structural side)                          |
-+----------------------+-------------------+-------------------+-------------------------------------------------------------------------------+
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| Variable             | Associated Solver | Mphys tag         | Variable description                                                 |
++======================+===================+===================+======================================================================+
+| :code:`x_aero_ref`   | Aerodynamic       | mphys_coordinates | Reference aerodynamic surface coordinates (original jig shape)       |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`x_aero0`      | Aerodynamic       | mphys_coordinates | Aerodynamic surface coordinates (orig. jig shape + geom. DV changes) |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`x_aero`       | Aerodynamic       | mphys_coupling    | Aerodynamic surface coordinates (orig. + geom. + aeroelastic disps)  |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`u_aero`       | Aerodynamic       | mphys_coupling    | Aerodynamic surface displacements                                    |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`f_aero`       | Aerodynamic       | mphys_coupling    | Aerodynamic surface forces                                           |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`T_convect`    | Aerodynamic       | mphys_coupling    | Temperature for convective solver at interface                       |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`q_convect`    | Aerodynamic       | mphys_coupling    | Convective heat flow at interface                                    |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`x_struct_ref` | Structural        | mphys_coordinates | Structural coordinates (original jig shape)                          |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`x_struct0`    | Structural        | mphys_coordinates | Structural coordinates (orig. jig shape + geom. DV changes)          |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`u_struct`     | Structural        | mphys_coupling    | Structural state vector (displacements)                              |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`f_struct`     | Structural        | mphys_coupling    | Structural forces                                                    |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`T_conduct`    | Thermal           | mphys_coupling    | Temperature at interface (structural side)                           |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
+| :code:`q_conduct`    | Thermal           | mphys_coupling    | Conductive heat flow at interface (structural side)                  |
++----------------------+-------------------+-------------------+----------------------------------------------------------------------+
 
 To make swapping solvers easier, it is also helpful to share noncoupling variable names if possible:
 
